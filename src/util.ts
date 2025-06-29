@@ -2,7 +2,7 @@ import assert from "assert";
 import type { TOriginX, TOriginY } from "fabric";
 import * as fabric from "fabric/node";
 import fileUrl from "file-url";
-import { pathExists } from "fs-extra";
+import fsExtra from "fs-extra";
 import { sortBy } from "lodash-es";
 import type { KenBurns, Keyframe, Position, PositionObject } from "./types.js";
 
@@ -128,7 +128,7 @@ export const assertFileValid = async (path: string, allowRemoteRequests?: boolea
     assert(allowRemoteRequests, "Remote requests are not allowed");
     return;
   }
-  assert(await pathExists(path), `File does not exist ${path}`);
+  assert(await fsExtra.pathExists(path), `File does not exist ${path}`);
 };
 
 export const loadImage = (pathOrUrl: string) =>
